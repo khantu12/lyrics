@@ -33,6 +33,27 @@ export const getSong = async (id: number) => {
           name: true,
         },
       },
+      line: {
+        select: {
+          id: true,
+          text: true,
+          type: true,
+          order: true,
+          annotations: {
+            select: {
+              id: true,
+              text: true,
+              range: true,
+              user: {
+                select: {
+                  id: true,
+                  name: true,
+                },
+              },
+            },
+          },
+        },
+      },
     },
   });
 };
