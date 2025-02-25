@@ -34,6 +34,7 @@ model Song {
   id          Int     @id @default(autoincrement())
   title       String
   description String?
+  image       String?
   artist      Artist? @relation(fields: [artistId], references: [id])
   artistId    Int
   addedBy     User?   @relation(fields: [addedById], references: [id])
