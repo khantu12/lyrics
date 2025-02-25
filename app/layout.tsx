@@ -16,7 +16,9 @@ export default function RootLayout({
     <html lang="en">
       <body className="antialiased">
         <Navigation />
-        {children}
+        <div className="flex w-full justify-center">
+          <div className="w-full max-w-4xl">{children}</div>
+        </div>
       </body>
     </html>
   );
