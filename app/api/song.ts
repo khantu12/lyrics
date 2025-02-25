@@ -53,6 +53,9 @@ export const getSong = async (id: number) => {
             },
           },
         },
+        orderBy: {
+          order: 'asc',
+        },
       },
     },
   });
