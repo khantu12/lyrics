@@ -16,3 +16,23 @@ export const getTopSongs = async () => {
     },
   });
 };
+
+export const getSong = async (id: number) => {
+  return await prisma.song.findUnique({
+    where: {
+      id,
+    },
+    select: {
+      id: true,
+      title: true,
+      description: true,
+      image: true,
+      artist: {
+        select: {
+          id: true,
+          name: true,
+        },
+      },
+    },
+  });
+};
