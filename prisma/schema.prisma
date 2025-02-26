@@ -28,7 +28,7 @@ model Artist {
   description String?
   image       String?
   songs       Song[]
-  album       Album[]
+  albums       Album[]
 }
 
 model Song {
