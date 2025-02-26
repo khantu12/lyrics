@@ -1,6 +1,6 @@
 import { getSong } from '@/app/api/song';
 import { H1 } from '@/components/typography';
-import Image from 'next/image';
+import Link from 'next/link';
 
 export default async function Page({ params }: { params: { songId: string } }) {
   const song = await getSong(Number(params.songId as string));
@@ -29,8 +29,13 @@ export default async function Page({ params }: { params: { songId: string } }) {
             <div className="flex gap-4">
               {/* <Image alt="" src={song?.image ?? ''} width={200} height={200} /> */}
               <img alt="" src={song?.image ?? ''} width={200} height={200} className="rounded-md" />
-              <div className="flex gap-2">
-                <span className="text-xl">{song?.artist?.name}</span>
+              <div>
+                <Link
+                  href={`/artist/${song?.artist?.id}`}
+                  className="text-xl underline underline-offset-2 hover:text-zinc-800"
+                >
+                  {song?.artist?.name}
+                </Link>
               </div>
             </div>
           </div>
