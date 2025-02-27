@@ -30,7 +30,7 @@ export default async function Page({ params }: { params: Promise<{ artistId: str
       </div>
       <div className="ml-10 flex flex-col gap-5">
         <H1 className="font-bold">Discography</H1>
-        <Tabs value={'albums'}>
+        <Tabs defaultValue="albums">
           <TabsList>
             <TabsTrigger value="albums">Albums</TabsTrigger>
             <TabsTrigger value="singles">Singles and EPs</TabsTrigger>
@@ -54,7 +54,23 @@ export default async function Page({ params }: { params: Promise<{ artistId: str
               </div>
             ))}
           </TabsContent>
-          <TabsContent value="singles">Change your password here.</TabsContent>
+          <TabsContent value="singles" className="mt-4 grid grid-cols-3 gap-4">
+            {artist?.songs.map((song) => (
+              <div key={song.id} className="flex gap-4">
+                <img
+                  alt="song image"
+                  src={song.image ?? null}
+                  width={100}
+                  height={100}
+                  className="rounded-md"
+                />
+                <div className="flex flex-col gap-2">
+                  <span className="text-lg font-semibold">{song.title}</span>
+                  <span className="text-sm">{song?.year} · Single</span>
+                </div>
+              </div>
+            ))}
+          </TabsContent>
         </Tabs>
       </div>
     </div>

@@ -36,6 +36,7 @@ model Song {
   title       String
   description String?
   image       String?
+  year        Int?
   artist      Artist? @relation(fields: [artistId], references: [id])
   artistId    Int
   addedBy     User?   @relation(fields: [addedById], references: [id])
