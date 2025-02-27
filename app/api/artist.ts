@@ -23,6 +23,7 @@ export const getArtist = async (id: number) => {
           id: true,
           title: true,
           image: true,
+          year: true,
         },
       },
     },

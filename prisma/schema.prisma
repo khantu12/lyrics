@@ -28,7 +28,7 @@ model Artist {
   description String?
   image       String?
   songs       Song[]
-  albums       Album[]
+  albums      Album[]
 }
 
 model Song {
@@ -40,7 +40,7 @@ model Song {
   artistId    Int
   addedBy     User?   @relation(fields: [addedById], references: [id])
   addedById   Int
-  lines        Line[]
+  lines       Line[]
   album       Album?  @relation(fields: [albumId], references: [id])
   albumId     Int?
 }
@@ -67,6 +67,7 @@ model Annotation {
 model Album {
   id          Int     @id @default(autoincrement())
   title       String
+  year        Int?
   description String?
   image       String?
   artist      Artist? @relation(fields: [artistId], references: [id])
