@@ -7,7 +7,7 @@ export const Navigation = () => {
       <h1 className="text-xl font-medium text-white">Lyrics</h1>
       <div className="flex w-full items-center justify-between text-white">
         <Link href="/">Home</Link>
-        <div className="w-1/3">
+        <div className="gap-3w-1/3 flex justify-end">
           <Search />
         </div>
       </div>

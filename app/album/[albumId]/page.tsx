@@ -1,6 +1,5 @@
 import { getAlbum } from '@/app/api/album';
 import { H1 } from '@/components/typography';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Link from 'next/link';
 
 export default async function Page({ params }: { params: Promise<{ albumId: string }> }) {
@@ -40,20 +39,22 @@ export default async function Page({ params }: { params: Promise<{ albumId: stri
       </div>
       <div className="ml-10 flex flex-col gap-5">
         <H1 className="font-bold">Tracklist</H1>
-        {album?.songs.map((song, index) => (
-          <Link
-            key={song.id}
-            className="flex gap-4 rounded-md p-2 hover:bg-pink-200"
-            href={`/song/${song.id}`}
-          >
-            <div className="flex flex-col gap-2">
-              <div className="flex flex-row items-center gap-4">
-                <p className="text-lg font-semibold text-gray-500">{index + 1}</p>
-                <span className="text-lg font-semibold">{song.title}</span>
+        <div className="flex flex-col gap-1">
+          {album?.songs.map((song, index) => (
+            <Link
+              key={song.id}
+              className="flex gap-4 rounded-md p-2 hover:bg-pink-200"
+              href={`/song/${song.id}`}
+            >
+              <div className="flex flex-col gap-2">
+                <div className="flex flex-row items-center gap-4">
+                  <p className="text-lg font-semibold text-gray-500">{index + 1}</p>
+                  <span className="text-lg font-semibold">{song.title}</span>
+                </div>
               </div>
-            </div>
-          </Link>
-        ))}
+            </Link>
+          ))}
+        </div>
       </div>
     </div>
   );

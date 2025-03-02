@@ -18,6 +18,9 @@ const eslintConfig = [
       'plugin:prettier/recommended',
       'plugin:tailwindcss/recommended',
     ],
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off',
+    },
   }),
 ];
 
