@@ -2,8 +2,9 @@ import { getSong } from '@/app/api/song';
 import { H1 } from '@/components/typography';
 import Link from 'next/link';
 
-export default async function Page({ params }: { params: { songId: string } }) {
-  const song = await getSong(Number(params.songId as string));
+export default async function Page({ params }: { params: Promise<{ songId: string }> }) {
+  const { songId } = await params;
+  const song = await getSong(Number(songId));
 
   const sections = (() => {
     if (!song?.lines.length) return [[]];

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Input } from './ui/input';
+import { Search } from './common/search';
 
 export const Navigation = () => {
   return (
@@ -8,7 +8,7 @@ export const Navigation = () => {
       <div className="flex w-full items-center justify-between text-white">
         <Link href="/">Home</Link>
         <div className="w-1/3">
-          <Input placeholder="Search songs, artists, or lyrics..." />
+          <Search />
         </div>
       </div>
     </nav>
