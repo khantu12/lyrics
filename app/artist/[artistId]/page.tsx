@@ -21,8 +21,9 @@ export default async function Page({ params }: { params: Promise<{ artistId: str
                 height={200}
                 className="rounded-md"
               />
-              <div className="flex gap-2">
-                <span className="text-xl">{artist?.realName}</span>
+              <div className="flex flex-col justify-between gap-2">
+                <span className="text-xl font-semibold">{artist?.realName}</span>
+                <p className="mb-4">{artist?.description}</p>
               </div>
             </div>
           </div>
@@ -30,7 +31,7 @@ export default async function Page({ params }: { params: Promise<{ artistId: str
       </div>
       <div className="ml-10 flex flex-col gap-5">
         <H1 className="font-bold">Discography</H1>
-        <Tabs defaultValue="albums">
+        <Tabs defaultValue="singles">
           <TabsList>
             <TabsTrigger value="albums">Albums</TabsTrigger>
             <TabsTrigger value="singles">Singles and EPs</TabsTrigger>
@@ -40,7 +41,7 @@ export default async function Page({ params }: { params: Promise<{ artistId: str
               <div key={album.id} className="flex gap-4">
                 <img
                   alt="album image"
-                  src={album.image}
+                  src={album.image || ''}
                   width={100}
                   height={100}
                   className="rounded-md"
@@ -59,7 +60,7 @@ export default async function Page({ params }: { params: Promise<{ artistId: str
               <div key={song.id} className="flex gap-4">
                 <img
                   alt="song image"
-                  src={song.image ?? null}
+                  src={song.image ?? ''}
                   width={100}
                   height={100}
                   className="rounded-md"
