@@ -30,13 +30,21 @@ export default async function Page({ params }: { params: { songId: string } }) {
               {/* <Image alt="" src={song?.image ?? ''} width={200} height={200} /> */}
               <img alt="" src={song?.image ?? ''} width={200} height={200} className="rounded-md" />
               <div className="flex flex-col justify-between">
-                <Link
-                  href={`/artist/${song?.artist?.id}`}
-                  className="text-xl underline underline-offset-2 hover:text-zinc-800"
-                >
-                  {song?.artist?.name}
-                </Link>
-
+                <div className="flex items-center gap-2">
+                  <Link
+                    href={`/artist/${song?.artist?.id}`}
+                    className="text-xl underline underline-offset-2 hover:text-zinc-800"
+                  >
+                    {song?.artist?.name}
+                  </Link>
+                  <p className="text-xl">·</p>
+                  <Link
+                    href={`/album/${song?.album?.id}`}
+                    className="text-xl underline underline-offset-2 hover:text-zinc-800"
+                  >
+                    {song?.album?.title}
+                  </Link>
+                </div>
                 <p className="mb-4">{song?.description}</p>
               </div>
             </div>

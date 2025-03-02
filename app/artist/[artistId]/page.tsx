@@ -1,6 +1,7 @@
 import { getArtist } from '@/app/api/artist';
 import { H1 } from '@/components/typography';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import Link from 'next/link';
 
 export default async function Page({ params }: { params: Promise<{ artistId: string }> }) {
   const { artistId } = await params;
@@ -57,7 +58,11 @@ export default async function Page({ params }: { params: Promise<{ artistId: str
           </TabsContent>
           <TabsContent value="singles" className="mt-4 grid grid-cols-3 gap-4">
             {artist?.songs.map((song) => (
-              <div key={song.id} className="flex gap-4">
+              <Link
+                key={song.id}
+                className="flex gap-4 rounded-md p-2 hover:bg-pink-200"
+                href={`/song/${song.id}`}
+              >
                 <img
                   alt="song image"
                   src={song.image ?? ''}
@@ -69,7 +74,7 @@ export default async function Page({ params }: { params: Promise<{ artistId: str
                   <span className="text-lg font-semibold">{song.title}</span>
                   <span className="text-sm">{song?.year} · Single</span>
                 </div>
-              </div>
+              </Link>
             ))}
           </TabsContent>
         </Tabs>

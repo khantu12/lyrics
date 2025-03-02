@@ -27,6 +27,12 @@ export const getSong = async (id: number) => {
       title: true,
       description: true,
       image: true,
+      album: {
+        select: {
+          id: true,
+          title: true,
+        },
+      },
       artist: {
         select: {
           id: true,
