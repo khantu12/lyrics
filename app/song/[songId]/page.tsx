@@ -1,6 +1,7 @@
 import { getSong } from '@/app/api/song';
 import { H1 } from '@/components/typography';
 import Link from 'next/link';
+import { Lines } from './lines';
 
 export default async function Page({ params }: { params: Promise<{ songId: string }> }) {
   const { songId } = await params;
@@ -52,15 +53,7 @@ export default async function Page({ params }: { params: Promise<{ songId: strin
           </div>
         </div>
       </div>
-      <div className="ml-10 flex flex-col gap-5">
-        {sections.map((section, index) => (
-          <div key={index} className="flex flex-col gap-1">
-            {section.map((line) => (
-              <span key={line.id}>{line.type === 'section' ? `[${line.text}]` : line.text}</span>
-            ))}
-          </div>
-        ))}
-      </div>
+      <Lines sections={sections} />
     </div>
   );
 }
