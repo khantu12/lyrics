@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 
-import { cn } from '@/lib/utils';
 import { UserAuthForm } from './userAuthForm';
 import { GoogleLogin } from '@/components/common/googleLogin';
 import { auth } from '../auth';
@@ -19,16 +18,7 @@ export default async function AuthenticationPage() {
 
   return (
     <>
-      <div className="container relative hidden flex-col items-center justify-center md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
-        <Link
-          href="/sign-in"
-          className={cn(
-            // buttonVariants({ variant: 'ghost' }),
-            'absolute right-4 top-4 md:right-8 md:top-8',
-          )}
-        >
-          Sign In
-        </Link>
+      <div className="container relative mx-auto hidden flex-col items-center justify-center md:grid lg:max-w-none lg:px-0">
         <div className="lg:p-8">
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
             <div className="flex flex-col space-y-2 text-center">
@@ -50,6 +40,15 @@ export default async function AuthenticationPage() {
               .
             </p>
             <GoogleLogin />
+            <span className="flex justify-center gap-1 text-sm text-muted-foreground">
+              Already have an account?
+              <Link
+                href="/sign-in"
+                className="font-semibold underline underline-offset-2 hover:text-zinc-800"
+              >
+                Sign In
+              </Link>
+            </span>
           </div>
         </div>
       </div>
